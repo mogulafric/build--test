@@ -1,7 +1,6 @@
 import { apiSlice } from "../../app/api/apiSlice"
 
 export const usersApiSlice = apiSlice.injectEndpoints({
-
     endpoints: builder => ({
         getUsers: builder.query({
             query: () => '/api/v1/user/getusers',
@@ -11,17 +10,29 @@ export const usersApiSlice = apiSlice.injectEndpoints({
             query: (userID) => `/api/v1/user/getuserbyid/${userID}`,
             keepUnusedDataFor: 60,
         }),
-        updateUser: builder.query({
-            query: () => `/api/v1/user/updateuser`,
-            keepUnusedDataFor: 60,
+        adduser: builder.mutation({
+            query: ({userID, data}) => ({
+                url:`/api/v1/user/updateuser`,
+                method:'POST',
+                body:`${data}`
+            })  
         }),
-        deleteUser: builder.query({
-            query: (userID) => `/api/v1/user/deleteuser/${userID}`,
-            keepUnusedDataFor: 60,
+        updateUser: builder.mutation({
+            query: ({userID, data}) => ({
+                url:`/api/v1/user/updateuser`,
+                method:'PATCH',
+                body:`${data}`
+            })  
+        }),
+        deleteUser: builder.mutation({
+            query: (userID) => ({
+                url:`/api/v1/user/updateuser`,
+                method:'DELETE'
+            })
         })
     })
 })
 
 export const {
-    useGetUsersQuery, useGetUserQuery, useUpdateUserQuery
+    useGetUsersQuery, useGetUserQuery, useUpdateUserMutation, useDeleteUserMutation
 } = usersApiSlice 

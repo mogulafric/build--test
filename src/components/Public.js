@@ -1,25 +1,21 @@
 import { Link } from "react-router-dom"
 
+
 const Public = () => {
 
     const content = (
         <section className="public">
             <header>
-                <h1>ST. Francis of Assi Kaliini Sec. School</h1>
+                <h3 className="headerMain">ST. Francis of Assi Kaliini Sec. School</h3>
             </header>
             <main>
-                <p>School system.</p>
+                <p></p>
                 <p>&nbsp;</p>
-                <address>
-                    School<br />
-                    Call<br />
-                    Email, <br />
-                    <a href="#">(254),phone</a>
-                </address>
+                <Link to="/login"  style={{color:'#000'}}>Login</Link> <br></br>
+                <Link to="/resetpassword" style={{color:'#000'}}>Password Reset</Link>
             </main>
             <footer>
-                <Link to="/login">Login</Link> <br></br>
-                <Link to="/resetpassword">Password Reset</Link>
+                
             </footer>
         </section>
 

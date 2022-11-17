@@ -80,7 +80,8 @@ const ResetPassword = () => {
                 />
                 <button>Sign In</button>
             </form>
-            <Link to="../login">Login </Link>
+            <br /> <br />
+            <Link to="../login" style={{color:"#000"}}>Login </Link>
         </section>
     )
 

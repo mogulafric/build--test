@@ -4,6 +4,7 @@ import { useNavigate, Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setCredentials } from "./authSlice";
 import { useLoginMutation } from "./authApiSlice";
+import Spinner from 'react-bootstrap/Spinner';
 
 const Login = () => {
   const emailRef = useRef();
@@ -53,7 +54,7 @@ const Login = () => {
   const handlePwdInput = (e) => setPassword(e.target.value);
 
   const content = isLoading ? (
-    <h1>Loading...</h1>
+    <h1><Spinner animation="border" /></h1>
   ) : (
     <section className="login">
       <p
@@ -64,12 +65,15 @@ const Login = () => {
         {errMsg}
       </p>
 
-      <h1>Login</h1>
+      <h3>Login</h3>
 
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} style={{width:'80%', float:"left"}}>
+        <div className="form-group">
         <label htmlFor="email">Email:</label>
         <input
           type="text"
+          className="form-control"
+          placeholder="Enter email"
           id="email"
           ref={emailRef}
           value={email}
@@ -77,19 +81,25 @@ const Login = () => {
           autoComplete="off"
           required
         />
-
+  </div>
+  <div className="form-group">
         <label htmlFor="password">Password:</label>
         <input
           type="password"
+          placeholder="Password"
+          className="form-control"
           id="password"
           onChange={handlePwdInput}
           value={password}
           required
         />
-        <button>Sign In</button>
+        </div>
+        <button className="btn btn-primary" >Sign In</button>
+        <br/><br/>
+        <Link to="../resetpassword" style={{color:"#000"}}>Reset Password </Link> 
+       <Link to="../" style={{color:"#000"}}>Home </Link>
       </form>
-      <Link to="../resetpassword">Reset Password </Link> &nbsp;&nbsp;
-      <Link to="../">Home </Link>
+     
     </section>
   );
 

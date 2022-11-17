@@ -1,19 +1,7 @@
-import React from "react"
-import { useGetUserQuery } from "./usersApiSlice";
-import { useParams } from "react-router-dom";
 
-const UpdateProfile = ({history, location, match}) => {
-    const paramID = useParams()
-    const userID = paramID.id
-    const {
-        data: user,
-        isLoading,
-        isSuccess,
-        isError,
-        error,
-      } = useGetUserQuery(userID);
 
-      console.log(user)
+const UpdateProfile = ({userID}) => {
+   
     const content = (
         <section className="login">
             <p>back  | home</p>
